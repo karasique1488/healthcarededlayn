@@ -1,5 +1,1 @@
-# BMI-Calculator
-BMI Calculator using Bootstrap and javascript
-
-Written for <a href="http://www.healthwealthcalculator.com/bmi.html">healthwealthcalculator.com</a>
-
+ДЕДлайн по вебу, 10 декабря 2к22 года
