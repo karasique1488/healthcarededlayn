@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+<link href="jsstyle1.css" rel="stylesheet" type="text/css" id="cssLink" />
+
+<!-- ---JS FUNCTION to Swap Styles---
+Author: Steven Leabo 
+---------------------------------*/
+<script type="text/javascript">
+    function swapStyleSheet1()
+    {
+     //Local Variables
+     var changeCSS; //Object reference to CSS link tag
+     //Get access to style sheet link
+     changeCSS = document.getElementById("cssLink");
+     //Assign a new style sheet
+     changeCSS.href = "jsstyle1.css"; 
+    }function swapStyleSheet2()
+    {
+     //Local Variables
+     var changeCSS; //Object reference to CSS link tag
+     //Get access to style sheet link
+     changeCSS = document.getElementById("cssLink");
+     //Assign a new style sheet
+     changeCSS.href = "jsstyle2.css"; 
+    }
+</script>
+
+/* ---JS FUNCTION to calculate BMI---
+Author: Steven Leabo 
+-----------------------------------*/
+
+-->
+<script>
+
+  function substitute() {
+  var height = (document.getElementById('height').value);
+  console.log(height);
+  var weight = (document.getElementById('weight').value);
+  console.log(weight)
+  var bmi = (weight / Math.pow(height, 2)) * 703;
+
+  var result = bmi.toFixed(1);
+
+  document.getElementById("title").innerHTML = "Your BMI is " + result;
+
+      if (result <= 18.5) {
+        document.getElementById("descript").innerHTML = "You're underweight. You can find more about healthy eating at: http://www.cdc.gov";
+      }
+
+        // If BMI is 18.5-24.9 user is normal weight
+        else if (result == 18.5 || result <= 24.9) {
+        document.getElementById("descript").innerHTML = "You're normal weight. While your weight might not be over or under the suggested BMI normals, it's important to realize there is more to health than body weight. You should still be active in fitness regardless.";
+      }
+
+        // If BMI is 25.0-29.9 user is overweight
+        else if (result == 25.0 || result <= 29.9) {
+        document.getElementById("descript").innerHTML = "You're overweight. You need to lose some weight to be considered healthy by the BMI scale. This can be done by living an active healthy lifestyle.";
+      }
+
+        // If BMI is 30 or above user is obese
+        else if (result >= 30) {
+        document.getElementById("descript").innerHTML = "You're obese. You should seek help from your primary care physician. Being obese can have serious negative effects on health.";
+      }
+
+  }
+</script>
+
+</head>
+
+	<body>
+
+  <div class="wrapper">
+    <div class="contents">
+      <div id="titleBar">
+
+        <h5>BMI Calculator</h5>
+      </div>
+      <p class="toolTips">Please enter your height and weight below to calculator your BMI.</p>
+      <div class="inputs">
+        <ul>
+          <li>
+            <div>
+         
+         <p id="labels">Height: </p><input type="number" pattern="\d*" id="height" onkeydown="if (event.keyCode == 13) { substitute(); toggle_div_fun('result'); }" /> (cm)<br><br>
+              
+        </div>
+          </li>
+          
+            <hr class="listHr">
+          
+          <div>
+          <li>
+
+            <p id="labels">Weight: </p><input type="number" pattern="\d*" id="weight" onkeydown="if (event.keyCode == 13) { substitute(); toggle_div_fun('result'); }" /> lbs(pounds)<br><br>
+
+
+          </li>
+        </div>
+        </ul>
+      </div>
+
+      <div class="buttonWrapper" id="result2" onclick="substitute(); toggle_div_fun('result');">
+
+        <h2 class="buttonText">Submit</h2>
+      </div>
+
+
+       <!--Placeholder button to swap stylesheet back ---<div id="buttons"><input type="button" id="swap1" value="Change to Style Sheet 1" onclick="swapStyleSheet1();"/>
+      <input type="button" id="swap2" value="Change to Style Sheet 2" onclick="swapStyleSheet2();"/>-->
+
+      <div class="result" id="result">
+        <h2 id="title" style="text-align:center"></h2>
+        <p id="descript" style="text-indent: 50px;"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggle_div_fun(id) {       
+    	var divelement = document.getElementById(id);       
+    	if(divelement.style.display == 'block')          
+    		divelement.style.display = 'none';       
+    	else          
+    		divelement.style.display = 'block';    }
+  </script>
+</body>
+
+</html>
