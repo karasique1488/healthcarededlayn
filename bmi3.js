@@ -1,15 +1,15 @@
 <!--
 function CalcIt(form){var Age=Number(form.Years.value);var weight=Number(form.wt.value);if(!checkWeight(weight))return false;if(form.wu.selectedIndex==0){kg=weight*0.45359237;}else{kg=weight;}
-if(kg<10){alert("Weights should be heavier than 10 kilograms (22 pounds).");return false;}
-if(kg>200){alert("Weights should be lighter than 200 kilograms (441 pounds).");return false;}
+if(kg<10){alert("Значение меньше 10 кило");return false;}
+if(kg>200){alert("Значение больше 200 кило");return false;}
 var height=Number(form.ht.value);if((isNaN(height))||(height==null)||(height=="")||(height<0)){feetAndInches(form);height=Number(form.ht.value);}
 if(form.hu.selectedIndex==0){heightInches=height;heightMeters=height*2.54/100;}else{heightInches=height/2.54;heightMeters=height/100;}
-if(heightMeters<0.33){alert("Heights should be taller than 33 centimeters (31.5 inches).");return false;}
-if(heightMeters>2.41){alert("Heights should be shorter than 241 centimeters ( 7 feet, 11 inches).");return false;}
-setFeetAndInches(form,heightInches);var cm=heightMeters*100;if((isNaN(Age))||(Age==null)||(Age==""))Age=GetAge(form,cm);if(Age<1){alert("Ages younger than 1 year old are too young for this calculation. Sorry.");return false;}else{if(Age>120){alert("All ages from 70 to 120 are treated as age 75.");Age=75;form.Years.value=75;}}
-SetAgeCat(form,Age);if(form.Gender.selectedIndex==0){if(Age<12&&cm>170){alert("Height seems taller than Age, so Age was changed.");Age=25;form.Years.value=Age;}
-if(cm<155&&Age>17){alert("Height seems too low for the Age, so Age was changed.");Age=rounding((0.0003*cm*cm)+(0.0847*cm)- 7.5544,1);form.Years.value=Age;}}else{if(Age<12&&cm>170){alert("Height seems taller than Age, so Age was changed.");Age=25;form.Years.value=Age;}
-if(cm<145&&Age>17){alert("Height seems too low for the Age, so Age was changed.");Age=rounding((0.0007*cm*cm)-(0.0136*cm)- 1.6819,0);form.Years.value=Age;}}
+if(heightMeters<0.33){alert("Значение меньше 33 см");return false;}
+if(heightMeters>2.41){alert("Значение больше 240 см");return false;}
+setFeetAndInches(form,heightInches);var cm=heightMeters*100;if((isNaN(Age))||(Age==null)||(Age==""))Age=GetAge(form,cm);if(Age<1){alert("Введите правильный возраст");return false;}else{if(Age>120){alert("Все возрасты от 75 лет имеют одиинаковое значение");Age=75;form.Years.value=75;}}
+SetAgeCat(form,Age);if(form.Gender.selectedIndex==0){if(Age<12&&cm>170){alert("Возраст не соответствует росту");Age=25;form.Years.value=Age;}
+if(cm<155&&Age>17){alert("ВОзраст не соответствует возрасту");Age=rounding((0.0003*cm*cm)+(0.0847*cm)- 7.5544,1);form.Years.value=Age;}}else{if(Age<12&&cm>170){alert("ВОзраст изменен.");Age=25;form.Years.value=Age;}
+if(cm<145&&Age>17){alert("Возраст изменен");Age=rounding((0.0007*cm*cm)-(0.0136*cm)- 1.6819,0);form.Years.value=Age;}}
 bmi=kg/Math.pow(heightMeters,2);form.bmi.value=rounding(bmi,1);var b85=25;var b05=17;var b95=30;var b75=25;var a2=Age*Age;var a3=a2*Age;var a4=a2*a2;var hadj=0;if(form.Gender.selectedIndex==1){if(Age<14){b85=0.000283*a4- 0.01751*a3+ 0.3673*a2- 2.3464*Age+ 21.352;b05=-0.00016*a4+ 0.00429*a3+ 0.0043*a2- 0.4246*Age+ 15.107;b95=0.000485*a4- 0.0268*a3+ 0.5096*a2- 2.926*Age+ 23.164;}else{b05=20*(1- Math.exp(-1*(0.11*Age)));b95=(31.1*Age)/(2.0+Age);
 if(Age<25){if(form.cdc.selectedIndex==0){b85=0.000283*a4- 0.01751*a3+ 0.3673*a2- 2.3464*Age+ 21.352;}else{b85=0.002855*a3- 0.1909*a2+ 4.2262*Age- 6.1898;}}else{b85=(28.5*(Age+8))/(5 +(Age+8));
 }}
@@ -20,7 +20,7 @@ b95=(33.3*Age)/(2.9+Age);
 if(Age<15){b75=b85;}else{b75=25.5*(1-Math.exp(-0.1*(Age+10)));}}
 if(form.cdc.selectedIndex==0){b95=Math.min(b95,30);b85=Math.min(b85,25);b75=b85;}
 if(Age<15){b75=b85;}
-var interp="Obese";if(bmi<b95)interp="Overweight";if(bmi<b85)interp="Marginally Overweight";if(bmi<b75)interp="In Normal Range";if(bmi<b05)interp="Underweight";if(bmi<13||bmi>50)interp="Check your numbers";form.interp.value=interp;var p05=0;var p10=0;var p25=0;var p50=0;var p75=0;var p90=0;var p95=0;var m=0;var b=0;var theP=0;var specific50=0;var diff50=0;a2=cm*cm;a3=a2*cm;if(form.Gender.selectedIndex==0){if(cm<125){p05=0.0021*a2- 0.155*cm+ 8.2203;p10=0.0023*a2- 0.1823*cm+ 9.618;p25=0.0028*a2- 0.2744*cm+ 14.483;p50=0.0026*a2- 0.21*cm+ 10.8;p75=0.0037*a2- 0.3934*cm+ 19;p90=0.0058*a2- 0.7611*cm+ 35.6;p95=0.0082*a2- 1.2204*cm+ 58.051;}else{if(cm<165){p05=20+(70-20)/(1+(Math.pow(10,(158-cm)*0.04)));
+var interp="Жирный";if(bmi<b95)interp="избыточный вес";if(bmi<b85)interp="избыточный вес";if(bmi<b75)interp="В норме";if(bmi<b05)interp="недобор веса";if(bmi<13||bmi>50)interp="неправильное значение";form.interp.value=interp;var p05=0;var p10=0;var p25=0;var p50=0;var p75=0;var p90=0;var p95=0;var m=0;var b=0;var theP=0;var specific50=0;var diff50=0;a2=cm*cm;a3=a2*cm;if(form.Gender.selectedIndex==0){if(cm<125){p05=0.0021*a2- 0.155*cm+ 8.2203;p10=0.0023*a2- 0.1823*cm+ 9.618;p25=0.0028*a2- 0.2744*cm+ 14.483;p50=0.0026*a2- 0.21*cm+ 10.8;p75=0.0037*a2- 0.3934*cm+ 19;p90=0.0058*a2- 0.7611*cm+ 35.6;p95=0.0082*a2- 1.2204*cm+ 58.051;}else{if(cm<165){p05=20+(70-20)/(1+(Math.pow(10,(158-cm)*0.04)));
 p10=23+(67-23)/(1+(Math.pow(10,(156-cm)*0.05)));
 p25=24+(75-24)/(1+(Math.pow(10,(156-cm)*0.05)));
 p50=22.9+(89-22.9)/(1+(Math.pow(10,(156-cm)*0.045)));
@@ -79,7 +79,7 @@ return true;}
 function rightDigit(num){num=num-(Math.floor(num/10)*10);return num;}
 function rounding(number,decimal){multi=Math.pow(10,decimal);number=Math.round(number*multi)/ multi;
 return number;}
-function checkWeight(val){if((isNaN(val))||(val==null)||(val=="")||(val<0)){alert("Please enter a value for Weight.");return false;}
+function checkWeight(val){if((isNaN(val))||(val==null)||(val=="")||(val<0)){alert("Введите значение для веса");return false;}
 return true;}
 function OpenLink(theURL){window.open(theURL);return true;}
 function microsoftKeyPress(){if(window.event.keyCode==13){CalcIt(document.forms[0]);}
