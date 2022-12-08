@@ -1,0 +1,171 @@
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Калькулятор индекса массы тела </title>
+<meta name="description" content="Считает индекс массы тела на основании введенных данных">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+ <link href="./css/bootstrap.min.css" rel="stylesheet">
+ </head>
+<body>
+<div class="row">
+<div>
+<h1 align="center">Калькулятор ИМТ (Индекса массы тела)</h1>
+<p align="center">Калькулятор считает индекс на основании данных которые Вы ввели и показывает результат и примерный возраст</p>
+<form method="POST" action="" >
+<div class="table table-striped">
+<table class="table-striped table-centered" align="center" width="100%"><tbody><tr><td >
+<table class="table-striped table-centered" align="center">
+<tbody><tr>
+<td width="20"></td>
+<td width="50">Масса:</td>
+<td> <input class="form-control"name="wt" type="text">
+<select class="btn btn-secondary dropdown-toggle"name="wu" size="1" onchange="poundsAndKilos(this.form)">
+<option selected="">pounds</option>
+<option>kilograms</option>
+</select><em><font size="1">Конвертирование килограмм в фунты происходит автоматически</font></em></td>
+</tr>
+<tr>
+<td></td>
+<td >Рост:</td>
+<td colspan="2"> <input class="form-control" name="ht" type="text">
+<select class="btn btn-secondary dropdown-toggle"name="hu" size="1" onchange="inchesCm(this.form)">
+<option selected="">inches</option>
+<option>cm</option>
+</select>
+&nbsp;в футах: <select class="btn btn-secondary dropdown-toggle"name="htf" size="1" onchange="feetAndInches(this.form)">
+<option value="1">1'</option>
+<option value="2">2'</option>
+<option value="3">3'</option>
+<option value="4">4' </option>
+<option value="5" selected="">5' </option>
+<option value="6">6' </option>
+<option value="7">7' </option>
+</select><select class="btn btn-secondary dropdown-toggle"name="hti" size="1" onchange="feetAndInches(this.form)">
+<option value="0">0'' </option>
+<option value="1">1'' </option>
+<option value="2">2'' </option>
+<option value="3">3'' </option>
+<option value="4">4'' </option>
+<option value="5">5'' </option>
+<option value="6" selected="">6'' </option>
+<option value="7">7'' </option>
+<option value="8">8'' </option>
+<option value="9">9'' </option>
+<option value="10">10'' </option>
+<option value="11">11'' </option>
+</select></td>
+</tr>
+</tbody></table>
+<table border="0" align="center">
+<tbody><tr>
+<td ><input class="btn btn-primary" type="button"onclick="CalcIt(this.form)"value="Считать"></input></td>
+<td>
+<table class="table table-responsive" cellpadding="4">
+<tbody><tr>
+<td align="right"><b>Ваш ИМТ:</b></td>
+<td>
+<input class="form-control" maxlength="5" name="bmi" size="5" type="text">
+кг/м<sup><small>2</small></sup></td>
+</tr>
+</tbody></table>
+</td>
+</tr>
+</tbody>&nbsp;</table>
+</td></tr></tbody></table>
+<table class="table-striped table-centered" align="center" width="100%"><tbody><tr><td>
+<table class="table-centered" align="center"><tbody><tr><td>
+<table class="table-centered"align="center"width="100%"><tbody><tr>
+<td style="width:20%"align="center">Примерный возраст:</td>
+<td style="width:80%"colspan="2" align="center">
+<input class="form-control" name="Years" size="4" type="text">Возраст <select class="btn btn-secondary dropdown-toggle"size="1" name="AgeCat" onchange="SetAge(this.form)">
+<option>70 + лет</option>
+<option>60 - 69 лет</option>
+<option>50 - 59 лет</option>
+<option>40 - 49 лет</option>
+<option>30 - 39 лет</option>
+<option>20 - 29 лет</option>
+<option>18 - 19 лет</option>
+<option>17 лет</option>
+<option>16 лет</option>
+<option>15 лет</option>
+<option>14 лет</option>
+<option>13 лет</option>
+<option>12 лет</option>
+<option>11 лет</option>
+<option>10 лет</option>
+<option>9 лет</option>
+<option>8 лет</option>
+<option>7 лет</option>
+<option>6 лет</option>
+<option>5 лет</option>
+<option>4 года</option>
+<option>3 года</option>
+<option>2 года</option>
+<option>1.5 года</option>
+<option>1 год</option>
+<option selected="">Выберите возраст</option>
+<option>Младенец</option>
+</select>
+</td>
+</tr>
+<tr>
+<td align="right">Пол:</td>
+<td align="left">
+<select class="btn btn-secondary dropdown-toggle" size="1" name="Gender" onchange="CalcIt(this.form)">
+<option selected="">Мужчина</option>
+<option>Женщина</option> </select>
+</td>
+<td><input class="btn btn-PRIMARY "name="button1" onclick="CalcIt(this.form)" value="Считать" type="button"></td>
+</tr>
+</tbody></table>
+</td></tr>
+</tbody></table>
+</td>
+</tr>
+</tbody></table></div>
+<table class="table table-striped">
+	<tbody><tr>
+		<td align="center">
+			<table align="center">
+				<tbody><tr><td align="center">
+<p>Ваше тело: <input class="form-control" name="interp" type="text"> Основываясь на данных:
+<select class="btn btn-secondary btn-toggel"size="1" name="cdc" onchange="CalcIt(this.form)">
+<option>метода Стивена Холлса</option>
+<option selected="">Всемирной организации здравоохранения</option>
+</select></p>
+</td>
+</tr></tbody></table>
+<!--table align="center">
+<tbody><tr>
+<td align="center"><p class="reg">Соотношение вашего веса на  <input class="form-control" name="kgcmP" size="20" type="text"> в сравнении<br> с другими людьми вашего возраста</p></td>
+</tr>
+</tbody></table>
+<div>
+<p>If you are at <b>50<sup><small>th</small></sup>
+percentile</b>, you are close to the <b>average</b> weight.<br>
+At 90<sup><small>th</small></sup> percentile, your
+weight is greater than 90% of others.<br>
+At 20<sup><small>th</small></sup> percentile, then 80% of
+others weigh more than you.</p>
+<p>( Compared to American's weights )</p>
+</div>
+</td>
+</tr>
+</tbody></table-->
+<p>&nbsp;</p></div>
+</form></div>  
+</div>  
+<script language="JavaScript" src="./js/bmi3.js" type="text/javascript" defer=""></script></div>  
+</div>  
+ 
+
+ 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+ 
+<script src="./js/bootstrap.min.js"></script>
+ 
+<script type="text/javascript" src="./js/pastels.js"></script>
+<script type="text/javascript">/* <![CDATA[ */(function(d,s,a,i,j,r,l,m,t){try{l=d.getElementsByTagName('a');t=d.createElement('textarea');for(i=0;l.length-i;i++){try{a=l[i].href;s=a.indexOf('/cdn-cgi/l/email-protection');m=a.length;if(a&&s>-1&&m>28){j=28+s;s='';if(j<m){r='0x'+a.substr(j,2)|0;for(j+=2;j<m&&a.charAt(j)!='X';j+=2)s+='%'+('0'+('0x'+a.substr(j,2)^r).toString(16)).slice(-2);j++;s=decodeURIComponent(s)+a.substr(j,m-j)}t.innerHTML=s.replace(/</g,'&lt;').replace(/>/g,'&gt;');l[i].href='mailto:'+t.value}}catch(e){}}}catch(e){}})(document);/* ]]> */</script>
+</body>
+<footer align="center">Фархад Юнусалиев, Мухаммадрасул Исомиддинов, Сухроб Абдуллаев, Руслан Каратаев. Группы №230-231 21</footer>
+
